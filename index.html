@@ -1,15 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Compras</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    
+
 
 </head>
 <body>
+    <div class="app">
     <header>
     <img src="src/image/Logo.png" class="logo">
     <span>quicklist</span>
@@ -37,7 +41,7 @@
 
     <li class="item">
         <div class="item-content">
-            <input type="checkbox">
+            <input type="checkbox" class="conteudo">
             <span>Café preto</span>
         </div>
         <i class="fa-solid fa-trash"></i>
@@ -63,6 +67,7 @@
 <div class="alert">
     <span>⚠ O item foi removido da lista</span>
     <i class="fa-solid fa-xmark close-alert"></i>
+</div>
 </div>
 </body>
 <script src="script.js"></script>

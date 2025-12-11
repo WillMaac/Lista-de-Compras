@@ -1,153 +1,185 @@
-/* -------- RESET -------- */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Inter", sans-serif;
-}
+/* base */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html,body { height: 100%; }
 
+/* fonte: mantém Inter (link no head) */
 body {
-    background: #F5F6FC;
-    color: #1E1E1E;
-    padding: 40px 20px;
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background: #F5F6FC;
+  color: #1E1E1E;
+  padding: 40px 20px;
 }
 
+/* construtor central da página */
+.app {
+  max-width: 760px;     /* controla largura em desktop */
+  margin: 0 auto;
+  width: 100%;
+}
 
-/* -------- LOGO + HEADER -------- */
+/* header */
 header {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+header img { height: 30px; display:block; }
+header span {
+  font-weight: 700;
+  font-size: 26px;
+  color: #3A3F4A;
+  letter-spacing: -0.2px;
 }
 
-header img {
-    height: 30px;
-}
-
-
-/* -------- BOTÃO VOLTAR -------- */
+/* voltar */
 .voltar {
-    color: #C73774;
-    font-size: 15px;
-    margin-bottom: 30px;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    cursor: pointer;
+  color: #C73774;
+  font-size: 15px;
+  margin-bottom: 20px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
 }
 
-
-/* -------- TÍTULO -------- */
+/* título */
 h1 {
-    font-size: 26px;
-    margin-bottom: 25px;
+  font-size: 28px;
+  margin-bottom: 18px;
+  color: #1E1E1E;
 }
 
-
-/* -------- INPUT E BOTÃO -------- */
+/* ---------- INPUT + BOTÃO ---------- */
+/* area que contém input e botão (com comportamento responsivo) */
 .container-input {
-    display: flex;
-    gap: 15px;
-    margin-bottom: 35px;
+  display: flex;
+  gap: 15px;
+  margin-bottom: 30px;
+  align-items: center;
 }
 
+/* input */
 #input-text {
-    flex: 1;
-    padding: 14px;
-    border-radius: 10px;
-    border: none;
-    background: #fff;
-    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.05);
-    outline: none;
-    font-size: 15px;
+  flex: 1;
+  padding: 14px 16px;
+  border-radius: 10px;
+  border: none;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  outline: none;
+  font-size: 15px;
+  min-width: 0; /* evita overflow em flex */
 }
 
+/* botão - comportamento desktop: fix width, ao lado do input */
 .btn {
-    background: #C73774;
-    border: none;
-    color: white;
-    padding: 14px 22px;
-    border-radius: 10px;
-    cursor: pointer;
-    font-weight: 600;
-    font-size: 14px;
-    transition: 0.2s;
+  display: inline-block;
+  flex: 0 0 200px;      /* largura base em desktop */
+  padding: 14px 20px;
+  border-radius: 10px;
+  border: none;
+  background: #C73774;
+  color: #fff;
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background .15s ease, transform .08s ease;
+  text-align: center;
+  white-space: nowrap;
 }
 
-.btn:hover {
-    background: #b02f66;
-}
+/* hover / active */
+.btn:hover { background: #b02f66; transform: translateY(-1px); }
+.btn:active { transform: translateY(0); }
 
-
-/* -------- LISTA -------- */
-ul {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-}
+/* ---------- LISTA ---------- */
+ul { list-style: none; display: flex; flex-direction: column; gap: 16px; padding: 0; margin: 0 0 30px 0; }
 
 .item {
-    background: #fff;
-    padding: 18px 22px;
-    border-radius: 14px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    box-shadow: 0px 2px 10px rgba(0,0,0,0.06);
+  background: #fff;
+  padding: 16px 18px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.06);
 }
 
+/* input checkbox */
+.item input[type="checkbox"] { width: 18px; height: 18px; margin-right: 12px; accent-color: #34D399;}
 
-/* checkbox */
-.item input[type="checkbox"] {
-    width: 18px;
-    height: 18px;
-    margin-right: 12px;
-}
-
-
-/* texto + checkbox */
-.item-content {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
+/* texto */
+.item-content { display:flex; align-items:center; gap:12px; }
+.item span { font-size: 16px; color: #222; }
 
 /* ícone de lixeira */
-.item i {
-    font-size: 18px;
-    color: #8a8a8a;
-    cursor: pointer;
-}
+.item i { font-size: 18px; color: #8a8a8a; cursor: pointer; }
+.item i:hover { color: #C73774; }
 
-.item i:hover {
-    color: #C73774;
-}
-
-
-/* -------- ALERTA -------- */
+/* alerta */
 .alert {
-    position: fixed;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: #ee0505;
-    padding: 12px 20px;
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #c73b44;
+  color: white;
+  padding: 12px 18px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .25s ease, transform .25s ease;
+}
+.alert.show { opacity: 1; pointer-events: auto; transform: translateX(-50%) translateY(0); }
+
+/* texto riscado quando marcado */
+.concluido { text-decoration: line-through; color: #9ca3af; }
+
+/* ================= RESPONSIVO ================= */
+
+/* mobile / telas estreitas */
+@media (max-width: 600px) {
+  body { padding: 24px 16px; }
+  .app { padding: 0 6px; }
+
+  h1 { font-size: 22px; margin-bottom: 14px; }
+
+  /* faz o input e o botão ficarem em coluna (botão full width) */
+  .container-input {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    margin-bottom: 22px;
+  }
+
+  #input-text {
+    padding: 12px 14px;
+    font-size: 15px;
     border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity .3s ease;
+  }
+
+  .btn {
+    flex: none;           /* remove largura fixa */
+    width: 100%;          /* ocupa toda largura do container */
+    padding: 14px;
+    border-radius: 12px;
+    font-size: 16px;
+  }
+
+  .item { padding: 14px 16px; border-radius: 12px; }
+  .item span { font-size: 15px; }
+
+  header span { font-size: 20px; }
 }
 
-.alert.show {
-    opacity: 1;
-    pointer-events: auto;
-}
-span{
-    font-size: 30px;
-    margin-left: 5px;
+/* telas muito largas (centro maior) */
+@media (min-width: 1000px) {
+  .app { max-width: 900px; }
+  .btn { flex: 0 0 230px; }
 }
