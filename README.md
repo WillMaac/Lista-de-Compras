@@ -1,7 +1,22 @@
 <div align="center">
-  <h1>🛒 Lista de Compras</h1>
+  <h1> Lista de Compras</h1>
   <p>Aplicação web desenvolvida com foco em experiência do usuário, organização de código e boas práticas de Frontend.</p>
 </div>
+
+---
+
+## 📌 Sobre o Projeto
+
+A **Lista de Compras** é uma aplicação web interativa que permite ao usuário adicionar, visualizar e marcar itens como concluídos de forma dinâmica.
+
+O projeto simula uma necessidade real do dia a dia: organizar compras de maneira prática. Foi desenvolvido com foco em:
+
+- Usabilidade simples
+- Resposta visual imediata
+- Código organizado e escalável
+- Estrutura preparada para evoluções futuras
+
+A aplicação funciona inteiramente no navegador, utilizando JavaScript para manipulação do DOM e controle de estados da interface.
 
 ---
 
@@ -61,8 +76,6 @@ Esse projeto reforçou minha base em desenvolvimento web e minha capacidade de t
 
 ---
 
-
-
 <div align="center">
- Se este projeto chamou sua atenção, fique à vontade para explorar o código!
+⭐ Se este projeto chamou sua atenção, fique à vontade para explorar o código!
 </div>
