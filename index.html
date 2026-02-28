@@ -4,71 +4,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Compras</title>
+
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+
     <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    
-
-
 </head>
+
 <body>
-    <div class="app">
+<div class="app">
+
     <header>
-    <img src="src/image/Logo.png" class="logo">
-    <span>quicklist</span>
-</header>
+        <img src="src/image/Logo.png" class="logo">
+        <span>quicklist</span>
+    </header>
 
-<span class="voltar">
-    <i class="fa-solid fa-arrow-left"></i> Voltar
-</span>
+    <span class="voltar">
+        <i class="fa-solid fa-arrow-left"></i> Voltar
+    </span>
 
-<h1>Compras da semana</h1>
+    <h1>Compras da semana</h1>
 
-<div class="container-input">
-    <input type="text" id="input-text" placeholder="Adicione um novo item">
-    <button class="btn">Adicionar item</button>
+    <div class="container-input">
+        <input type="text" id="input-text" placeholder="Adicione um novo item">
+        <button class="btn">Adicionar item</button>
+    </div>
+
+    <ul id="lista"></ul>
+
+    <div class="alert">
+        <span>⚠ O item foi removido da lista</span>
+        <i class="fa-solid fa-xmark close-alert"></i>
+    </div>
+
 </div>
 
-<ul>
-    <li class="item">
-        <div class="item-content">
-            <input type="checkbox">
-            <span>Pão de forma</span>
-        </div>
-        <i class="fa-solid fa-trash"></i>
-    </li>
-
-    <li class="item">
-        <div class="item-content">
-            <input type="checkbox" class="conteudo">
-            <span>Café preto</span>
-        </div>
-        <i class="fa-solid fa-trash"></i>
-    </li>
-
-    <li class="item">
-        <div class="item-content">
-            <input type="checkbox">
-            <span>Suco de laranja</span>
-        </div>
-        <i class="fa-solid fa-trash delete-icon" ></i>
-    </li>
-
-    <li class="item">
-        <div class="item-content">
-            <input type="checkbox">
-            <span>Bolacha</span>
-        </div>
-        <i class="fa-solid fa-trash"></i>
-    </li>
-</ul>
-
-<div class="alert">
-    <span>⚠ O item foi removido da lista</span>
-    <i class="fa-solid fa-xmark close-alert"></i>
-</div>
-</div>
-</body>
 <script src="script.js"></script>
+</body>
 </html>

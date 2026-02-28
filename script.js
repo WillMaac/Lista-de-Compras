@@ -1,58 +1,105 @@
 const input = document.getElementById("input-text");
-const lista = document.querySelector("ul");
+const lista = document.getElementById("lista");
 const btn = document.querySelector(".btn");
 const alertBox = document.querySelector(".alert");
 const closeAlert = document.querySelector(".close-alert");
 
-btn.addEventListener("click", function(e) {
-    e.preventDefault();
+/* =========================
+   ARRAY = ESTADO DA APLICAÇÃO
+========================= */
+let tarefas = [
+    { id: 1, texto: "Pão de forma", concluida: false },
+    { id: 2, texto: "Café preto", concluida: false },
+    { id: 3, texto: "Suco de laranja", concluida: false },
+    { id: 4, texto: "Bolacha", concluida: false }
+];
 
+/* =========================
+   RENDERIZAÇÃO
+========================= */
+function renderizarLista() {
+    lista.innerHTML = "";
+
+    tarefas.forEach(tarefa => {
+        const li = document.createElement("li");
+        li.classList.add("item");
+        li.dataset.id = tarefa.id;
+
+        li.innerHTML = `
+            <div class="item-content">
+                <input 
+                    type="checkbox" 
+                    class="check-item"
+                    ${tarefa.concluida ? "checked" : ""}
+                >
+                <span class="${tarefa.concluida ? "concluido" : ""}">
+                    ${tarefa.texto}
+                </span>
+            </div>
+            <i class="fa-solid fa-trash delete-icon"></i>
+        `;
+
+        lista.appendChild(li);
+    });
+}
+
+/* =========================
+   ADICIONAR ITEM
+========================= */
+btn.addEventListener("click", () => {
     const valor = input.value.trim();
     if (valor === "") return;
 
-    // Criar o LI
-    const li = document.createElement("li");
-    li.classList.add("item");
+    tarefas.push({
+        id: Date.now(),
+        texto: valor,
+        concluida: false
+    });
 
-    li.innerHTML = `
-        <div class="item-content">
-            <input type="checkbox" class="check-item">
-            <span>${valor}</span>
-        </div>
-        <i class="fa-solid fa-trash delete-icon"></i>
-    `;
-
-    lista.appendChild(li);
     input.value = "";
+    renderizarLista();
 });
 
-
-// ---------- EVENTO ÚNICO: deletar + marcar concluído ----------
+/* =========================
+   EVENTOS DA LISTA
+========================= */
 lista.addEventListener("click", (e) => {
+    const li = e.target.closest("li");
+    if (!li) return;
 
-    // --- Remover item ---
+    const id = Number(li.dataset.id);
+
+    // Remover
     if (e.target.classList.contains("delete-icon")) {
-        const li = e.target.closest("li");
-        li.remove();
+        tarefas = tarefas.filter(tarefa => tarefa.id !== id);
+        renderizarLista();
 
         alertBox.classList.add("show");
-
         setTimeout(() => {
             alertBox.classList.remove("show");
         }, 3000);
-
         return;
     }
 
-    // --- Marcar / desmarcar concluído ---
+    // Concluir
     if (e.target.type === "checkbox") {
-        const span = e.target.closest("li").querySelector("span");
-        span.classList.toggle("concluido");
+        tarefas = tarefas.map(tarefa =>
+            tarefa.id === id
+                ? { ...tarefa, concluida: !tarefa.concluida }
+                : tarefa
+        );
+        renderizarLista();
     }
 });
 
-
-// --- Fechar alerta ---
+/* =========================
+   FECHAR ALERTA
+========================= */
 closeAlert.addEventListener("click", () => {
     alertBox.classList.remove("show");
 });
+
+/* =========================
+   INICIALIZAÇÃO
+========================= */
+renderizarLista();
